@@ -39,6 +39,10 @@
 #include "pfolder.h"
 #include <string.h>
 
+#if defined(P_OS_BSD)
+#include <netinet/in.h>
+#endif
+
 #define P2P_ENCTYPE_RSA_AES 0
 
 typedef uint32_t packet_type_t;

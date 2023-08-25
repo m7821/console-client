@@ -45,7 +45,7 @@
 #define DELIM_DIR   '\\'
 #endif
 
-#if defined(P_OS_LINUX)
+#if defined(P_OS_LINUX) || defined(P_OS_BSD)
 #define DELIM_DIR  '/'
 #endif
 

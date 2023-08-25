@@ -5,7 +5,7 @@ RANLIB=ranlib
 USESSL=mbed
 
 #CFLAGS=-Wall -Wpointer-arith -O2 -g -mtune=core2
-CFLAGS=-Wall -Wpointer-arith -O2 -g -fno-stack-protector -fomit-frame-pointer -mtune=core2 -I../sqlite -DP_ELECTRON -fPIC
+CFLAGS=-Wall -Wpointer-arith -O2 -g -fno-stack-protector -fomit-frame-pointer -mtune=core2 -I../sqlite -DP_ELECTRON -fPIC -I/usr/local/include
 
 #CFLAGS=-Wall -Wpointer-arith -O2 -g -fsanitize=address -mtune=core2
 #CFLAGS=-Wall -Wpointer-arith -O2 -g -fsanitize=address -mtune=core2 -I../sqlite
@@ -28,6 +28,10 @@ ifeq ($(OS),Windows_NT)
 else
     UNAME_S := $(shell uname -s)
     UNAME_V := $(shell uname -v)
+    ifeq ($(UNAME_S),FreeBSD)
+        CFLAGS += -DP_OS_BSD -DP_OS_POSIX -D_FILE_OFFSET_BITS=64
+	LDFLAGS += -lssl -lcrypto -lfuse -lpthread -lsqlite3 -lzlib
+    endif
     ifeq ($(UNAME_S),Linux)
         CFLAGS += -DP_OS_LINUX -D_FILE_OFFSET_BITS=64
             ifneq (,$(findstring Debian,$(UNAME_V)))

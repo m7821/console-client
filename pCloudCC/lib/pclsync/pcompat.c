@@ -70,6 +70,10 @@
 #include <pwd.h>
 #include <grp.h>
 
+#if defined(P_OS_BSD)
+#include <netinet/in.h>
+#endif
+
 extern char **environ;
 
 #if defined(MAP_ANONYMOUS)

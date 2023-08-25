@@ -16,9 +16,7 @@
 #endif
 
 // Do we have this in Win?
-#if !defined(P_OS_WINDOWS)
-#include <sys/xattr.h>
-#else
+#if defined(P_OS_WINDOWS) || defined(P_OS_BSD)
 // No xattr in win.
 // Value get from standard xattr.h
 enum
@@ -28,6 +26,8 @@ enum
   XATTR_REPLACE = 2	/* set value, fail if attr does not exist.  */
 #define XATTR_REPLACE	XATTR_REPLACE
 };
+#else
+#include <sys/xattr.h>
 #endif
 
 #ifndef ENODATA

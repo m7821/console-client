@@ -16,6 +16,23 @@ On Ubuntu you can run the following command:
 
 ## Build steps
 
+#### For TrueNAS Core (FreeBSD 13)
+- Tested on TrueNAS-13.0-U5.3  
+> pkg install git cmake gmake gcc lzlib boost-libs fusefs-libs
+> git clone https://github.com/m7821/console-client
+> cd ./console-client/pCloudCC/   
+> cd lib/pclsync/        
+> gmake clean    
+> gmake fs     
+> cd ../mbedtls/   
+> cmake .      
+> gmake clean     
+> gmake       
+> cd ../..      
+> cmake .    
+> gmake      
+
+#### For Linux
 > sudo apt-get install cmake zlib1g-dev libboost-system-dev libboost-program-options-dev libpthread-stubs0-dev libfuse-dev libudev-dev fuse build-essential git
 > mkdir console-client   
 > git clone https://github.com/pcloudcom/console-client.git ./console-client/  
