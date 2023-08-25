@@ -1407,7 +1407,7 @@ static psync_socket_t connect_socket_direct(const char *host, const char *port){
     setsockopt(sock, SOL_SOCKET, SO_KEEPALIVE, (char *)&sock_opt, sizeof(sock_opt));
 #elif defined(P_OS_MACOSX) || defined(P_OS_BSD)
     setsockopt(sock, IPPROTO_TCP, TCP_NODELAY, (char  *)&sock_opt, sizeof(sock_opt));
-    setsockopt(sock, IPPROTO_TCP, TCP_KEEPALIVE, (char*)&sock_opt, sizeof(sock_opt));
+    setsockopt(sock, IPPROTO_TCP, TCP_KEEPIDLE, (char*)&sock_opt, sizeof(sock_opt));
 #endif
 #if defined(SOL_TCP)
 #if defined(TCP_KEEPCNT)
